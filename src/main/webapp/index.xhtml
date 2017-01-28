@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <script type="text/javascript">
+        	eventFunction = function(eventName){
+        		console.log("Event is: "+eventName);
+        		if(eventName === 'blur'){
+        			console.log("if statement");
+        			remoteCommand();
+        		}else{
+        			console.log("else statement");
+        		}
+        	}
+        </script>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:calendar id="cal"
+                        value="#{index.date}"
+                        pattern="dd/MM/yyyy HH:mm"
+                        locale="tr">
+                <p:ajax event="dateSelect" oncomplete="eventFunction('dateSelect');"/>
+                <p:ajax event="blur" oncomplete="eventFunction('blur');"/>
+            </p:calendar>
+            <p:remoteCommand name="remoteCommand"
+		                     process="@all"
+		                     update=":#{p:component('cal')}" 
+		                     actionListener="#{index.onSelect()}"/>
+        </h:form>
+    </h:body>
+</html>
