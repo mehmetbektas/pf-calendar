@@ -16,21 +16,22 @@ public class IndexBean {
 
 	private Date date;
 
-  public IndexBean() {
-    System.out.println("IndexBean is initialized.");
-    date = Calendar.getInstance().getTime();
-  }
+	public IndexBean() {
+		System.out.println("IndexBean is initialized.");
+		date = Calendar.getInstance().getTime();
+	}
 
-  public String onSelect(){
-    System.out.println("IndexBean - onSelect is called.");
-    System.out.println("Selected Date: " + date);
-    return "index";
-  }
+	public String onSelect() {
+		System.out.println("IndexBean - onSelect is called.");
+		System.out.println("Selected Date: " + date);
+		return "index";
+	}
 
-  public Date getDate() {
-	return date;
-}
-  public void setDate(Date date) {
-	this.date = date;
-}
+	public Date getDate() {
+		return date;
+	}
+	
+	public void setDate(Date date) {
+		this.date = date;
+	}
 }
